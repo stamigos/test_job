@@ -2,7 +2,7 @@ from flask import g, url_for, redirect, render_template, request
 from flask.ext.login import current_user
 from flask import jsonify
 from flask import Blueprint
-from config import MAX_SEARCH_RESULTS
+from config import MAX_SEARCH_RESULTS, WHOOSH_ENABLED
 from library import app
 from library.models import Author, Book
 from library.resources import Resources
@@ -15,6 +15,7 @@ search_model = ''
 def before_request():
     g.user = current_user
     g.search_form = SearchForm()
+    g.search_enabled = WHOOSH_ENABLED
 
 
 @app.route('/echo/', methods=['GET'])

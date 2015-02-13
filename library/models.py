@@ -1,5 +1,5 @@
 from library import db, app
-import flask.ext.whooshalchemy as whooshalchemy
+from config import WHOOSH_ENABLED
 from datetime import datetime
 
 ROLE_USER = 0
@@ -61,6 +61,7 @@ class Author(db.Model):
     def __repr__(self):
         return '<Author %r>' % self.name
 
-
-whooshalchemy.whoosh_index(app, Author)
-whooshalchemy.whoosh_index(app, Book)
+if WHOOSH_ENABLED:
+    import flask.ext.whooshalchemy as whooshalchemy
+    whooshalchemy.whoosh_index(app, Author)
+    whooshalchemy.whoosh_index(app, Book)
