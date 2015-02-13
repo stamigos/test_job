@@ -23,7 +23,7 @@ def register_post():
     user = User(request.form['username'], request.form['password'], request.form['email'])
     db.session.add(user)
     db.session.commit()
-    return redirect(url_for('login'))
+    return redirect(url_for('login_get'))
 
 
 @app.route('/login', methods=['GET'])
@@ -37,6 +37,6 @@ def login_post():
     password = request.form['password']
     registered_user = User.query.filter_by(username=username, password=password).first()
     if registered_user is None:
-        return redirect(url_for('login'))
+        return redirect(url_for('login_get'))
     login_user(registered_user)
     return redirect(request.args.get('next') or url_for('index'))

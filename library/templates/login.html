@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% block body %}
-  <form action="" method=post class="form-horizontal">
-    <h2>Signin to FlaskLogin(Library) Application </h2>
+
+      <form action="" method=post class="form-signin" role="form">
+        <h2 class="form-signin-heading">Signin to Library Application</h2>
+        <input type="text" name="username" class="form-control" placeholder="Enter Username" required>
+        <input type="password" name="password" class="form-control" placeholder="Enter Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+  <!--<form action="" method=post class="form-horizontal">
+    <h2>Signin to Library Application </h2>
     <div class="control-group">
         <div class="controls">
           <input type="text" id="username" name="username" class="input-xlarge"
@@ -21,5 +29,5 @@
           <button type="submit" class="btn btn-success">Signin</button>
         </div>
     </div>
-  </form>
+  </form>-->
 {% endblock %}

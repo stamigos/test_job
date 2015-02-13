@@ -1,28 +1,19 @@
 {% extends 'base.html' %}
 
 {% block body %}
+    <div class="container">
+  <form role="form" action="{{ action }}" method="post">
+  <div class="form-group">
+      {% for field in form %}
 
-	<div class="item-form">
-		<form class="pure-form pure-form-stacked"
-			  action="{{action}}"
-			  method="post">
-
-		    <fieldset>
-		        <legend>Item View</legend>
-
-			    {% for field in form %}
-
-			    	{{field.label()}}
-			        {{field(class="pure-input")}}
+          {{field.label()}}
+          {{field(class="form-control")}}
 
 		        {% endfor %}
-
-		        <button type="submit" class="pure-button pure-button-primary pure-input-1-4">Submit</button>
-
-				<a class="pure-button pure-button-primary button red" href="{{ path +'delete/'+ action.split('/')[-2]}}">delete</a>
-		    </fieldset>
-
-		</form>
-	</div>
+  </div>
+  <button type="submit" class="btn btn-success">Add</button>
+  <a class="btn btn-danger" href="{{ path + obj_id + '/delete/'}}">delete</a>
+</form>
+    </div>
 
 {% endblock %}

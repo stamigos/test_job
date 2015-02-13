@@ -15,6 +15,7 @@ login_manager.login_view = 'login'
 def load_user(id):
     return User.query.get(int(id))
 
+
 @app.route('/')
 def index():
     return render_template('index.html',
@@ -72,7 +73,8 @@ def get_edit(curr_model, obj_id):
     return render_template('detail_view.html',
                            form=form,
                            action=path,
-                           path=path)
+                           path=path,
+                           obj_id=obj_id)
 
 @app.route('/<curr_model>/', methods=['POST'])
 @login_required
