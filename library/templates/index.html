@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block body %}
+    {% for author in authors %}
+        <div><p>{{author.name}} Books:
+            {% for book in author.books %}
+                <b>{{ book.title }}</b></p>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

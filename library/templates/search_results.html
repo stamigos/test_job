@@ -1,0 +1,9 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Search results for "{{query}}":</h1>
+{% for author in results %}
+    {% include 'author.html' %}
+{% endfor %}
+{% endblock %}
