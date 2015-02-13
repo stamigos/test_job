@@ -1,6 +1,5 @@
 from library import db, app
 import flask.ext.whooshalchemy as whooshalchemy
-from flask import abort
 from datetime import datetime
 
 ROLE_USER = 0

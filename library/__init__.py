@@ -7,5 +7,7 @@ db = SQLAlchemy(app)
 
 from library import views, models
 from reg_auth.views import login_page
+from search.views import search_page
 
 app.register_blueprint(login_page)
+app.register_blueprint(search_page)

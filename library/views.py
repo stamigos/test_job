@@ -1,12 +1,10 @@
-from flask import request, g, redirect, url_for, render_template, flash
-from forms import SearchForm
+from flask import request, redirect, render_template
 from wtforms.ext.sqlalchemy.orm import model_form
-from flask.ext.login import current_user, login_required
+from flask.ext.login import login_required
 from flask.ext.login import LoginManager
 from library import db, app
 from library.resources import Resources
 from library.models import User, Book, Author
-from config import MAX_SEARCH_RESULTS
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -94,24 +92,3 @@ def post(curr_model, obj_id=''):
     db.session.commit()
 
     return redirect(path)
-
-
-@app.before_request
-def before_request():
-    g.user = current_user
-    g.search_form = SearchForm()
-
-
-@app.route('/search', methods=['POST'])
-def search():
-    if not g.search_form.validate_on_submit():
-        return redirect(url_for('/'))
-    return redirect(url_for('search_results_authors', query=g.search_form.search.data))
-
-
-@app.route('/search_results/<query>')
-def search_results_authors(query):
-    results = Author.query.whoosh_search(query, MAX_SEARCH_RESULTS).all()
-    return render_template('search_results.html',
-                           query=query,
-                           results=results)
