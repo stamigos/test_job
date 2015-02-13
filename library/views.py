@@ -48,7 +48,8 @@ def get_new(curr_model):
     return render_template('detail_view.html',
                            action=action,
                            path=path,
-                           form=form)
+                           form=form,
+                           obj_id=model.id)
 
 
 @app.route('/<curr_model>/<obj_id>/delete/', methods=['GET'])

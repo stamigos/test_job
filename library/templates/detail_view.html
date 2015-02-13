@@ -2,14 +2,14 @@
 
 {% block body %}
     <div class="container">
-  <form role="form" action="{{ action }}" method="post">
+  <form style="padding-top: 30px;" role="form" action="{{ action }}" method="post">
   <div class="form-group">
       {% for field in form %}
 
           {{field.label()}}
           {{field(class="form-control")}}
 
-		        {% endfor %}
+      {% endfor %}
   </div>
   <button type="submit" class="btn btn-success">Add</button>
   <a class="btn btn-danger" href="{{ path + obj_id + '/delete/'}}">delete</a>

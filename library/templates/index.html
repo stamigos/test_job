@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block body %}
+
     <div class="container">
-    <ul class="list-group">
+
+    <ul class="list-group" style="padding-top: 30px;">
     {% for author in authors %}
         <li class="list-group-item-heading"><b>{{ author.name }}</b></li>
             <ul class="list-group">

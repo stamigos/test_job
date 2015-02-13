@@ -9,7 +9,10 @@
     <!-- Bootstrap -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='signin.css') }}">
-
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
 		{% block head %} {% endblock %}
 </head>
 <body>
@@ -40,9 +43,21 @@
       </div>
     </div>
        <div class="container">
-               <h2>Searching in Authors:</h2>
+               <h2>Search:</h2>
                <form class="form-search" action="{{url_for('search')}}" method="post" name="search">{{g.search_form.hidden_tag()}}{{g.search_form.search(size=20)}}<button type="submit" class="btn">Search</button></form>
-       </div>
+                <script type="text/javascript">
+                  function clickedOp(search_model) {
+                $.ajax({
+                    type: "GET",
+                    url:$SCRIPT_ROOT + '/echo/',
+                    contentType: "application/json; charset=utf-8",
+                    data: { echoValue: search_model }
+                  });
+                }
+                </script>
+                  <label style="padding-right: 3px;"><input type="radio" onclick="clickedOp('authors');" size="5" name="optradio" value="authors"> Authors</label>
+                  <label style="padding-right: 3px;"><input type="radio" onclick="clickedOp('books');" size="5" name="optradio" value="books"> Books</label>
+               </div>
 		{% block body %}
 
 		{% endblock %}
