@@ -1,6 +1,5 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-import os
 
 app = Flask(__name__, static_url_path='/static')
 app.config.from_object('config')

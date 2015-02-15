@@ -1,2 +1,2 @@
 #!flask/bin/python
-from library import app
+from app import app
