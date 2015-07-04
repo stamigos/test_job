@@ -5,7 +5,7 @@
 {% endblock %}
 {% block body %}
 
-    <form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8" class="form-signin">
+    <form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="UTF-8" class="form-signin">
         <input type="hidden" name="ik_co_id" value="55964b5d3b1eaf522d8b456c" class="form-control"/>
         <input type="hidden" name="ik_pm_no" value="ID_4233" class="form-control" />
         <input type="hidden" name="ik_am" value="100.00" class="form-control"/>
@@ -26,18 +26,20 @@
         <input type="hidden" name="ik_exp" value="2015-07-05" class="form-control"/>
             <input type="submit" value="Pay" class="form-control">
     </form>
-    <form name="payment" method="post" action="https://sci.interkassa.com/" accept-charset="UTF-8"> <input type="hidden" name="ik_co_id" value="51237daa8f2a2d8413000000" />
+    <form name="payment" method="post" action="https://sci.interkassa.com/" enctype="UTF-8">
+        <input type="hidden" name="ik_co_id" value="55964b5d3b1eaf522d8b456c" />
         <input type="hidden" name="ik_pm_no" value="ID_4233" />
         <input type="hidden" name="ik_am" value="1.44" />
-        <input type="hidden" name="ik_desc" value="Payment Description" /> <input type="hidden" name="ik_act" value="payways" />
+        <input type="hidden" name="ik_desc" value="Payment Description" />
+        <input type="hidden" name="ik_act" value="payways" />
         <input type="hidden" name="ik_loc" value="en" />
         <input type="hidden" name="ik_enc" value="utf-8" />
         <input type="hidden" name="ik_int" value="json" />
         <input type="submit" value="Pay">
     </form>
 
-    <form name="payment" method="post" action="https://sci.interkassa.com/" accept-charset="UTF-8">
-        <input type="hidden" name="ik_co_id" value="51237daa8f2a2d8413000000" />
+    <form name="payment" method="post" action="https://sci.interkassa.com/" enctype="UTF-8">
+        <input type="hidden" name="ik_co_id" value="55964b5d3b1eaf522d8b456c" />
         <input type="hidden" name="ik_pm_no" value="ID_4233" />
         <input type="hidden" name="ik_am" value="1.44" />
         <input type="hidden" name="ik_desc" value="Payment Description" />
@@ -45,7 +47,8 @@
         <input type="hidden" name="ik_loc" value="en" />
         <input type="hidden" name="ik_enc" value="utf-8" />
         <input type="hidden" name="ik_act" value="payway" />
-        <input type="hidden" name="ik_pw_via" value="webmoney_webmoney_merchant_wmz" /> <input type="submit" value="Pay">
+        <input type="hidden" name="ik_pw_via" value="webmoney_webmoney_merchant_wmz" />
+        <input type="submit" value="Pay">
     </form>
 
 {% endblock %}
