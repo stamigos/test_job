@@ -5,9 +5,7 @@ app = Flask(__name__, static_url_path='/static')
 app.config.from_object('config')
 db = SQLAlchemy(app)
 
-from library import views, models
-from reg_auth.views import login_page
-from search.views import search_page
+from library import views
+from library.views import shop_page
 
-app.register_blueprint(login_page)
-app.register_blueprint(search_page)
+app.register_blueprint(shop_page)

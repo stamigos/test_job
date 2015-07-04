@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>Library</title>
+    <meta name="interkassa-verification" content="8a1bc6db0cae8f245132a3f8daba7f34" />
     <!-- Bootstrap -->
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.min.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='signin.css') }}">
@@ -25,39 +24,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/" >Library</a>
+          <a class="navbar-brand" href="/" >Main</a>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-              {% if g.user.is_authenticated()%}
-                    <li><a href="{{ url_for('get_list', curr_model='authors')}}">Authors</a></li>
-                    <li><a href="{{ url_for('get_list', curr_model='books')}}">Books</a></li>
-                    <li style="position:absolute;right:50px;"><a class="pure-button" href="{{ url_for('logout') }}">Logout</a></li>
-              {% endif %}
-              {% if not g.user.is_authenticated()%}
-                    <li style="position:absolute;right:150px;"><a href="{{ url_for('login_post') }}">Login</a></li>
-                    <li style="position:absolute;right:50px;"><a href="{{ url_for('register_post') }}">Register</a></li>
-              {% endif %}
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
     </div>
        <div class="container">
-          <!--     <h2>Search:</h2>
-               <form class="form-search" action="{# {{url_for('search')}} #}" method="post" name="search">{#{{g.search_form.hidden_tag()}}{{g.search_form.search(size=20)}} #}<button type="submit" class="btn">Search</button></form>
-                <script type="text/javascript">
-                  function clickedOp(search_model) {
-                $.ajax({
-                    type: "GET",
-                    url:$SCRIPT_ROOT + '/echo/',
-                    contentType: "application/json; charset=utf-8",
-                    data: { echoValue: search_model }
-                  });
-                }
-                </script>
-                  <label style="padding-right: 3px;"><input type="radio" onclick="clickedOp('authors');" size="5" name="optradio" value="authors"> Authors</label>
-                  <label style="padding-right: 3px;"><input type="radio" onclick="clickedOp('books');" size="5" name="optradio" value="books"> Books</label>
-               </div>-->
+
 		{% block body %}
 
 		{% endblock %}
