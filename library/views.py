@@ -24,7 +24,7 @@ def successful():
     ik_ps_price = request.args['ik_ps_price']
     ik_cur = request.args['ik_cur']
     ik_desc = request.args['ik_desc']
-    return render_template('successful.html', params=dict(ik_co_id=ik_co_id,
+    return render_template('successful.html', ik_co_id=ik_co_id,
                            ik_inv_id=ik_inv_id,
                            ik_inv_st=ik_inv_st,
                            ik_inv_crt=ik_inv_crt,
@@ -35,7 +35,7 @@ def successful():
                            ik_co_rfn=ik_co_rfn,
                            ik_ps_price=ik_ps_price,
                            ik_cur=ik_cur,
-                           ik_desc=ik_desc)
+                           ik_desc=ik_desc
                            )
 
 
@@ -53,7 +53,7 @@ def fail():
     ik_ps_price = request.args['ik_ps_price']
     ik_cur = request.args['ik_cur']
     ik_desc = request.args['ik_desc']
-    return render_template('fail.html', params=dict(ik_co_id=ik_co_id,
+    return render_template('fail.html', ik_co_id=ik_co_id,
                            ik_inv_id=ik_inv_id,
                            ik_inv_st=ik_inv_st,
                            ik_inv_crt=ik_inv_crt,
@@ -64,7 +64,7 @@ def fail():
                            ik_co_rfn=ik_co_rfn,
                            ik_ps_price=ik_ps_price,
                            ik_cur=ik_cur,
-                           ik_desc=ik_desc)
+                           ik_desc=ik_desc
                            )
 
 
@@ -82,7 +82,7 @@ def pending():
     ik_ps_price = request.args['ik_ps_price']
     ik_cur = request.args['ik_cur']
     ik_desc = request.args['ik_desc']
-    return render_template('pending.html', params=dict(ik_co_id=ik_co_id,
+    return render_template('pending.html', ik_co_id=ik_co_id,
                            ik_inv_id=ik_inv_id,
                            ik_inv_st=ik_inv_st,
                            ik_inv_crt=ik_inv_crt,
@@ -93,5 +93,5 @@ def pending():
                            ik_co_rfn=ik_co_rfn,
                            ik_ps_price=ik_ps_price,
                            ik_cur=ik_cur,
-                           ik_desc=ik_desc)
+                           ik_desc=ik_desc
                            )
