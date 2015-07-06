@@ -5,40 +5,8 @@
 {% endblock %}
 {% block body %}
 
-    <form id="payment" name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8" class="form-signin">
-        <input type="hidden" name="ik_co_id" value="55964b5d3b1eaf522d8b456c" class="form-control"/>
-        <input type="hidden" name="ik_pm_no" value="ID_4233" class="form-control" />
-        <input type="hidden" name="ik_am" value="100.00" class="form-control"/>
-        <input type="hidden" name="ik_cur" value="UAH" class="form-control"/>
-        <input type="hidden" name="ik_desc" value="Event Description" class="form-control"/>
-        <input type="hidden" name="ik_act" value="payways" class="form-control"/>
-        <input type="hidden" name="ik_pw_on" value="visa,yandexmoney,webmoney_merchant,w1_merchant_usd,privat24" class="form-control" />
-        <input type="hidden" name="ik_suc_u" value="https://pay-test-flask.herokuapp.com/successful" />
-        <input type="hidden" name="ik_suc_m" value="get" class="form-control"/>
-        <input type="hidden" name="ik_fal_u" value="https://pay-test-flask.herokuapp.com/fail" class="form-control"/>
-        <input type="hidden" name="ik_fal_m" value="get" class="form-control"/>
-        <input type="hidden" name="ik_pnd_u" value="https://pay-test-flask.herokuapp.com/pending" class="form-control"/>
-        <input type="hidden" name="ik_pnd_m" value="get" class="form-control"/>
-        <input type="hidden" name="ik_loc" value="en" />
-        <input type="hidden" name="ik_enc" value="utf-8" />
-        <input type="hidden" name="ik_int" value="web" />
-        <input type="hidden" name="ik_am_t" value="payway" />
-        <input type="hidden" name="ik_exp" value="2015-07-05" class="form-control"/>
-            <input type="submit" value="Pay" class="form-control">
-    </form>
-    <form name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
-        <input type="hidden" name="ik_co_id" value="55964b5d3b1eaf522d8b456c" />
-        <input type="hidden" name="ik_pm_no" value="ID_4233" />
-        <input type="hidden" name="ik_am" value="1.44" />
-        <input type="hidden" name="ik_desc" value="Payment Description" />
-        <input type="hidden" name="ik_act" value="payways" />
-        <input type="hidden" name="ik_loc" value="en" />
-        <input type="hidden" name="ik_enc" value="utf-8" />
-        <input type="hidden" name="ik_int" value="web" />
-        <input type="submit" value="Pay">
-    </form>
 
-    <form name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8">
+    <form name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8" class="form-signin">
         <input type="hidden" name="ik_co_id" value="55964b5d3b1eaf522d8b456c" />
         <input type="hidden" name="ik_pm_no" value="ID_4233" />
         <input type="hidden" name="ik_am" value="1.44" />
@@ -48,7 +16,7 @@
         <input type="hidden" name="ik_enc" value="utf-8" />
         <input type="hidden" name="ik_act" value="payway" />
         <input type="hidden" name="ik_pw_via" value="test_interkassa_test_xts" />
-        <input type="submit" value="Pay">
+        <input type="submit" value="Pay" class="form-control">
     </form>
 
 {% endblock %}
