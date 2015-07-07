@@ -1,13 +1,24 @@
 __author__ = 'amigos'
-from flask import render_template, Blueprint, request
+from flask import render_template, Blueprint, request, json
 from library import app
+from library.forms import PaymentForm
+import requests
 
 shop_page = Blueprint('shop', __name__, template_folder='templates')
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    form = PaymentForm()
+    d = {'ik_co_id': form.ik_co_id._value(), 'ik_pm_no': form.ik_pm_no._value(), 'ik_am': form.ik_am._value(),
+         'ik_int': form.ik_int._value(), 'ik_loc': form.ik_loc._value(), 'ik_enc': form.ik_enc._value(),
+         'ik_act': form.ik_act._value(), 'ik_pw_via': form.ik_pw_via._value(), 'ik_desc': form.ik_desc._value()}
+    print d
+
+    #r = requests.post("https://sci.interkassa.com/", data=d)
+    #resp = r.text
+    #print resp
+    return render_template('index.html', form=form)
 
 
 @app.route('/successful')
