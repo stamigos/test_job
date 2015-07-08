@@ -11,7 +11,8 @@ d = {'ik_co_id': '55964b5d3b1eaf522d8b456c',
      'ik_pw_via': 'perfectmoney_perfectmoney_merchant_usd',
      'ik_int': 'json'}
 
-str_IK = d['ik_am'] + ':' + d['ik_co_id'] + ':' + d['ik_desc'] + ':' + d['ik_pm_no'] + ':' + 'vf6j7MfrieEp7MUT'
+str_IK = d['ik_act'] + ':' + d['ik_am'] + ':' + d['ik_co_id'] + ':' + \
+         d['ik_desc'] + ':' + d['ik_pm_no'] + ':' + 'test_interkassa_test_xts' + ':' + 'vf6j7MfrieEp7MUT'
 #m = md5(str.encode())
 #value = m.hexdigest
 #print m.hexdigest()
