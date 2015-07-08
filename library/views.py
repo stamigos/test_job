@@ -10,20 +10,29 @@ shop_page = Blueprint('shop', __name__, template_folder='templates')
 @app.route('/')
 def index():
     form = PaymentFormIntercassa()
-    d = {'ik_co_id': form.ik_co_id._value(), 'ik_pm_no': form.ik_pm_no._value(), 'ik_am': form.ik_am._value(),
-         'ik_int': form.ik_int._value(), 'ik_loc': form.ik_loc._value(), 'ik_enc': form.ik_enc._value(),
-         'ik_act': form.ik_act._value(), 'ik_pw_via': form.ik_pw_via._value(), 'ik_desc': form.ik_desc._value()}
+    d = {'ik_co_id': form.ik_co_id._value(), 'ik_pm_no': form.ik_pm_no._value(),
+         'ik_am': form.ik_am._value(),'ik_int': form.ik_int._value(),
+         'ik_act': form.ik_act._value(), 'ik_pw_via': form.ik_pw_via._value(),
+         'ik_desc': form.ik_desc._value(), 'ik_sign': form.ik_sign._value()}
     print d
 
-    #r = requests.post("https://sci.interkassa.com/", data=d)
+    r = requests.post("https://sci.interkassa.com/", data=d)
     #r1 = requests.post("https://www.walletone.com/checkout/default.aspx", data={u'paymentForm': {u'action': u'https://www.walletone.com/checkout/default.aspx', u'method': u'post', u'parameters': {u'WMI_FAIL_URL': u'https://sci.interkassa.com/paysystem/return/ps/w1/in/merchant2/ci/38028870/act/failure', u'WMI_CURRENCY_ID': 643, u'WMI_PAYMENT_AMOUNT': u'4.25', u'WMI_PTENABLED': u'WalletOneRUB', u'WMI_PAYMENT_NO': u'38028870', u'WMI_SUCCESS_URL': u'https://sci.interkassa.com/paysystem/return/ps/w1/in/merchant2/ci/38028870/act/success', u'WMI_DESCRIPTION': u'BASE64:UGF5bWVudCBOby4gSUszODAyODg3MA==', u'WMI_SIGNATURE': u'Ix+luoZifqptHVCCw36aow==', u'WMI_MERCHANT_ID': u'122651507690', u'WMI_EXPIRED_DATE': u'2015-08-06 09:04:39'}}})
     #print "r1="
     #print r1.content
-    #print "r="
-    #print r.json()
-    #resp = r.text
-    #print resp
-    return render_template('index.html', form=form)
+    print "r="
+    print r.json()
+    url = r.json()['resultData']['paymentForm']['action']
+    ret_params = r.json()['resultData']['paymentForm']['parameters']
+    # r1 = requests.post(url, json=ret_params)
+    params_d = {'PAYMENT_ID': ret_params['PAYMENT_ID'], 'PAYEE_ACCOUNT': ret_params['PAYEE_ACCOUNT'],
+                'PAYEE_NAME': ret_params['PAYEE_NAME'], 'PAYMENT_AMOUNT': ret_params['PAYMENT_AMOUNT'],
+                'PAYMENT_UNITS': ret_params['PAYMENT_UNITS'], 'STATUS_URL': ret_params['STATUS_URL'],
+                'PAYMENT_URL': ret_params['PAYMENT_URL'], 'NOPAYMENT_URL': ret_params['NOPAYMENT_URL'],
+                'BAGGAGE_FIELDS': ret_params['BAGGAGE_FIELDS'], 'SUGGESTED_MEMO': ret_params['SUGGESTED_MEMO']}
+    #print r1.json()
+    print params_d
+    return render_template('index.html', form=form, url=url, params=params_d)
 
 
 @app.route('/successful')

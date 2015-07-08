@@ -12,7 +12,7 @@
         <input type="hidden" name="ik_am" value="1.44" />
         <input type="hidden" name="ik_desc" value="Payment Description" />
         <input type="hidden" name="ik_sign" value="Pr62CIEtb201+lHcAA6K+A==" />
-        <input type="submit" value="Pay_web" class="form-control">
+        <input type="submit" value="Оплатить (переадресация на SCI)" class="form-control">
     </form>
   <!--  <form name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8" class="form-signin">
         <input type="hidden" name="ik_co_id" value="55964b5d3b1eaf522d8b456c" />
@@ -28,11 +28,18 @@
     </form>-->
 
 
-    <form name="payment" method="POST" action="https://sci.interkassa.com/" enctype="utf-8" class="form-signin">
+   <!-- <form name="payment" method="POST" action="https://sci.interkassa.com/" enctype="utf-8" class="form-signin">
        {% for field in form %}
          {{ field }}
        {% endfor %}
         <input type="submit" value="Оплатить минуя ИК" class="form-control">
-    </form>
+    </form>-->
+
+<form action="{{ url }}" method="POST" class="form-signin">
+    {% for param_key, param_value in params.iteritems() %}
+    <input type="hidden" name="{{ param_key }}" value="{{ param_value }}">
+    {% endfor %}
+    <input type="submit" name="PAYMENT_METHOD" value="PerfectMoney (сквозной)" class="form-control">
+</form>
 
 {% endblock %}
