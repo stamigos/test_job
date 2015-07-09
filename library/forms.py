@@ -20,9 +20,9 @@ class PaymentFormIntercassa(Form):
 
 class PaymentFormWallet(Form):
     WMI_MERCHANT_ID = HiddenField('WMI_MERCHANT_ID', default="176742268953")
-    WMI_PAYMENT_AMOUNT = HiddenField('WMI_PAYMENT_AMOUNT', default="100.00")
-    WMI_CURRENCY_ID = HiddenField('WMI_CURRENCY_ID', default="643")
+    WMI_PAYMENT_AMOUNT = HiddenField('WMI_PAYMENT_AMOUNT', default="150.00")
+    WMI_CURRENCY_ID = HiddenField('WMI_CURRENCY_ID', default="980")
     WMI_DESCRIPTION = HiddenField('WMI_DESCRIPTION', default=u'Оплата демонстрационного заказа')
-    WMI_SUCCESS_URL = HiddenField('WMI_SUCCESS_URL')
-    WMI_FAIL_URL = HiddenField('WMI_FAIL_URL')
+    WMI_SUCCESS_URL = HiddenField('WMI_SUCCESS_URL', default="https://pay-test-flask.herokuapp.com/success/")
+    WMI_FAIL_URL = HiddenField('WMI_FAIL_URL', default="https://pay-test-flask.herokuapp.com/fail/")
     WMI_PTENABLED = HiddenField('WMI_PTENABLED', default='WalletOneUAH')

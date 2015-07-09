@@ -33,13 +33,13 @@ def index():
     #print r1.json()
     print params_d
 
-    form = PaymentFormWallet()
-    d_wal = {'WMI_MERCHANT_ID': form.WMI_MERCHANT_ID._value(), 'WMI_PAYMENT_AMOUNT': form.WMI_PAYMENT_AMOUNT._value(),
-         'WMI_CURRENCY_ID': form.WMI_CURRENCY_ID._value(), 'WMI_DESCRIPTION': form.WMI_DESCRIPTION._value(),
-         'WMI_SUCCESS_URL': form.WMI_SUCCESS_URL._value(), 'WMI_FAIL_URL': form.WMI_FAIL_URL._value(),
-         'WMI_PTENABLED': form.WMI_PTENABLED._value()}
+    form1 = PaymentFormWallet()
+    d_wal = {'WMI_MERCHANT_ID': form1.WMI_MERCHANT_ID._value(), 'WMI_PAYMENT_AMOUNT': form1.WMI_PAYMENT_AMOUNT._value(),
+         'WMI_CURRENCY_ID': form1.WMI_CURRENCY_ID._value(), 'WMI_DESCRIPTION': form1.WMI_DESCRIPTION._value(),
+         'WMI_SUCCESS_URL': form1.WMI_SUCCESS_URL._value(), 'WMI_FAIL_URL': form1.WMI_FAIL_URL._value(),
+         'WMI_PTENABLED': form1.WMI_PTENABLED._value()}
     print d_wal
-    r1 = requests.post("https://www.walletone.com/checkout/default.aspx", data=d_wal)
+    r1 = requests.post("https://wl.walletone.com/checkout/checkout/Index", data=d_wal)
     print "r1="
     print r1.json()
     return render_template('index.html', form=form, url_IK=url_IK, params=params_d)
