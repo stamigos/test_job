@@ -17,53 +17,34 @@
         <input type="hidden" name="ik_sign" value="EMUNVW3O60JyCtRgIbxrPg==" /> <!-- Pr62CIEtb201+lHcAA6K+A== -->
         <input type="submit" value="Оплатить (переадресация на SCI)" class="form-control">
     </form>
-  <!--  <form name="payment" method="post" action="https://sci.interkassa.com/" enctype="utf-8" class="form-signin">
-        <input type="hidden" name="ik_co_id" value="55964b5d3b1eaf522d8b456c" />
-        <input type="hidden" name="ik_pm_no" value="ID_4233" />
-        <input type="hidden" name="ik_am" value="1.44" />
-        <input type="hidden" name="ik_desc" value="Payment Description" />
-        <input type="hidden" name="ik_int" value="web" />
-        <input type="hidden" name="ik_loc" value="en" />
-        <input type="hidden" name="ik_enc" value="utf-8" />
-        <input type="hidden" name="ik_act" value="process" />
-        <input type="hidden" name="ik_pw_via" value="w1_w1_merchant_rub" />
-        <input type="submit" value="Pay_json" class="form-control">
-    </form>-->
+
+    <form action="{{ url_IK }}" method="POST" class="form-signin">
+        {% for param_key, param_value in params.iteritems() %}
+        <input type="hidden" name="{{ param_key }}" value="{{ param_value }}">
+        {% endfor %}
+        <input type="submit" name="PAYMENT_METHOD" value="PerfectMoney (сквозной через ИК)" class="form-control">
+    </form>
+
+    <form method="post" action="https://wl.walletone.com/checkout/checkout/Index" class="form-signin">
+      <input type="hidden" name="WMI_MERCHANT_ID"    value="176742268953" />
+      <input type="hidden" name="WMI_PAYMENT_AMOUNT" value="100.00" />
+      <input type="hidden" name="WMI_CURRENCY_ID"    value="980"/>
+      <input type="hidden" name="WMI_DESCRIPTION"    value="Оплата демонстрационного заказа"/>
+      <input type="hidden" name="WMI_SIGNATURE"      value="Ktu7I0beUIqdYROgYpG7fA==" />
+     <!-- <input type="hidden" name="WMI_SUCCESS_URL"    value="https://myshop.ru/w1/paid.php"/>
+      <input type="hidden" name="WMI_FAIL_URL"       value="https://myshop.ru/w1/fail.php"/>-->
+      <input type="submit" value="Оплатить (переадресация на W1)" class="form-control"/>
+    </form>
 
 
-   <!-- <form name="payment" method="POST" action="https://sci.interkassa.com/" enctype="utf-8" class="form-signin">
-       {% for field in form %}
-         {{ field }}
-       {% endfor %}
-        <input type="submit" value="Оплатить минуя ИК" class="form-control">
-    </form>-->
-
-<form action="{{ url_IK }}" method="POST" class="form-signin">
-    {% for param_key, param_value in params.iteritems() %}
-    <input type="hidden" name="{{ param_key }}" value="{{ param_value }}">
-    {% endfor %}
-    <input type="submit" name="PAYMENT_METHOD" value="PerfectMoney (сквозной через ИК)" class="form-control">
-</form>
-
-<form method="post" action="https://wl.walletone.com/checkout/checkout/Index" class="form-signin">
-  <input type="hidden" name="WMI_MERCHANT_ID"    value="176742268953" />
-  <input type="hidden" name="WMI_PAYMENT_AMOUNT" value="100.00" />
-  <input type="hidden" name="WMI_CURRENCY_ID"    value="643"/>
-  <input type="hidden" name="WMI_DESCRIPTION"    value="Оплата демонстрационного заказа"/>
- <!-- <input type="hidden" name="WMI_SUCCESS_URL"    value="https://myshop.ru/w1/paid.php"/>
-  <input type="hidden" name="WMI_FAIL_URL"       value="https://myshop.ru/w1/fail.php"/>-->
-  <input type="submit" value="Оплатить (переадресация на W1)" class="form-control"/>
-</form>
-
-    <form method="post" action="https://wl.walletone.com/checkout/checkout/Index" accept-charset="UTF-8" class="form-signin">
-            <input type="hidden" name="WMI_MERCHANT_ID"    value="176742268953"/>
-            <input type="hidden" name="WMI_PAYMENT_AMOUNT" value="100.00"/>
-            <input type="hidden" name="WMI_CURRENCY_ID"    value="980"/>
-            <input type="hidden" name="WMI_DESCRIPTION"    value="Оплата демонстрационного заказа"/>
-            <input type="hidden" name="WMI_PTENABLED"      value="WalletOneUAH"/>
-         <!--   <input type="hidden" name="WMI_SUCCESS_URL"    value="https://myshop.ru/w1/paid.php"/>
-            <input type="hidden" name="WMI_FAIL_URL"       value="https://myshop.ru/w1/fail.php"/>-->
-            <input type="submit" value="WalletOne (сквозной через W1)" class="form-control"/>
-          </form>
+   <form method="POST" action="{{ url_w1 }}" class="form-signin" id="{{ id_w1 }}" >
+               {% for input in inputs_l %}
+                   {% for name, value in input.iteritems() %}
+                <input type="hidden" name="{{ name }}" value="{{ value }}" />
+                   {% endfor %}
+               {% endfor %}
+               <input type="submit" value="WalletOne (сквозной через W1)" class="form-control">
+   </form>
+   <!-- <script type="text/javascript">document.getElementById('{{ id_w1 }}').submit()</script>-->
 
 {% endblock %}
