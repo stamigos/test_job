@@ -31,8 +31,8 @@ def index():
              'WMI_CURRENCY_ID': form1.WMI_CURRENCY_ID._value(), 'WMI_DESCRIPTION': form1.WMI_DESCRIPTION._value(),
              'WMI_SUCCESS_URL': form1.WMI_SUCCESS_URL._value(), 'WMI_FAIL_URL': form1.WMI_FAIL_URL._value(),
              'WMI_PTENABLED': form1.WMI_PTENABLED._value(), 'WMI_SIGNATURE': form1.WMI_SIGNATURE._value()}
+
     r1 = requests.post("https://wl.walletone.com/checkout/checkout/Index", data=d_wal)
-    print r1.text
     soup = BeautifulSoup(''.join(r1.text))
     inputs = soup.findAll('input', {'type': ['hidden']})
     inputs_l = []
