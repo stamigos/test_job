@@ -38,11 +38,11 @@
         <input type="submit" value="Оплатить минуя ИК" class="form-control">
     </form>-->
 
-<form action="{{ url }}" method="POST" class="form-signin">
+<form action="{{ url_IK }}" method="POST" class="form-signin">
     {% for param_key, param_value in params.iteritems() %}
     <input type="hidden" name="{{ param_key }}" value="{{ param_value }}">
     {% endfor %}
-    <input type="submit" name="PAYMENT_METHOD" value="PerfectMoney (сквозной)" class="form-control">
+    <input type="submit" name="PAYMENT_METHOD" value="PerfectMoney (сквозной через ИК)" class="form-control">
 </form>
 
 <form method="post" action="https://wl.walletone.com/checkout/checkout/Index" class="form-signin">
@@ -52,7 +52,14 @@
   <input type="hidden" name="WMI_DESCRIPTION"    value="Оплата демонстрационного заказа"/>
  <!-- <input type="hidden" name="WMI_SUCCESS_URL"    value="https://myshop.ru/w1/paid.php"/>
   <input type="hidden" name="WMI_FAIL_URL"       value="https://myshop.ru/w1/fail.php"/>-->
-  <input type="submit" value="Оплатить (W1)" class="form-control"/>
+  <input type="submit" value="Оплатить (переадресация на W1)" class="form-control"/>
+</form>
+
+<form action="{{ url }}" method="POST" class="form-signin">
+    {% for param_key, param_value in params.iteritems() %}
+    <input type="hidden" name="{{ param_key }}" value="{{ param_value }}">
+    {% endfor %}
+    <input type="submit" name="PAYMENT_METHOD" value="PerfectMoney (сквозной через ИК)" class="form-control">
 </form>
 
 

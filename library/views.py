@@ -1,7 +1,7 @@
 __author__ = 'amigos'
 from flask import render_template, Blueprint, request, json, make_response
 from library import app
-from library.forms import PaymentFormIntercassa
+from library.forms import PaymentFormIntercassa, PaymentFormWallet
 import requests
 
 shop_page = Blueprint('shop', __name__, template_folder='templates')
@@ -22,7 +22,7 @@ def index():
     #print r1.content
     print "r="
     print r.json()
-    url = r.json()['resultData']['paymentForm']['action']
+    url_IK = r.json()['resultData']['paymentForm']['action']
     ret_params = r.json()['resultData']['paymentForm']['parameters']
     # r1 = requests.post(url, json=ret_params)
     params_d = {'PAYMENT_ID': ret_params['PAYMENT_ID'], 'PAYEE_ACCOUNT': ret_params['PAYEE_ACCOUNT'],
@@ -32,7 +32,17 @@ def index():
                 'BAGGAGE_FIELDS': ret_params['BAGGAGE_FIELDS'], 'SUGGESTED_MEMO': ret_params['SUGGESTED_MEMO']}
     #print r1.json()
     print params_d
-    return render_template('index.html', form=form, url=url, params=params_d)
+
+    form = PaymentFormWallet()
+    d_wal = {'WMI_MERCHANT_ID': form.WMI_MERCHANT_ID._value(), 'WMI_PAYMENT_AMOUNT': form.WMI_PAYMENT_AMOUNT._value(),
+         'WMI_CURRENCY_ID': form.WMI_CURRENCY_ID._value(), 'WMI_DESCRIPTION': form.WMI_DESCRIPTION._value(),
+         'WMI_SUCCESS_URL': form.WMI_SUCCESS_URL._value(), 'WMI_FAIL_URL': form.WMI_FAIL_URL._value(),
+         'WMI_PTENABLED': form.WMI_PTENABLED._value()}
+    print d_wal
+    r1 = requests.post("https://www.walletone.com/checkout/default.aspx", data=d_wal)
+    print "r1="
+    print r1.json()
+    return render_template('index.html', form=form, url_IK=url_IK, params=params_d)
 
 
 @app.route('/callback/', methods=['POST'])
