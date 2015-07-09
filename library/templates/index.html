@@ -45,4 +45,15 @@
     <input type="submit" name="PAYMENT_METHOD" value="PerfectMoney (сквозной)" class="form-control">
 </form>
 
+<form method="post" action="https://wl.walletone.com/checkout/checkout/Index" class="form-signin">
+  <input type="hidden" name="WMI_MERCHANT_ID"    value="176742268953" />
+  <input type="hidden" name="WMI_PAYMENT_AMOUNT" value="100.00" />
+  <input type="hidden" name="WMI_CURRENCY_ID"    value="643"/>
+  <input type="hidden" name="WMI_DESCRIPTION"    value="Оплата демонстрационного заказа"/>
+ <!-- <input type="hidden" name="WMI_SUCCESS_URL"    value="https://myshop.ru/w1/paid.php"/>
+  <input type="hidden" name="WMI_FAIL_URL"       value="https://myshop.ru/w1/fail.php"/>-->
+  <input type="submit" value="Оплатить (W1)" class="form-control"/>
+</form>
+
+
 {% endblock %}
