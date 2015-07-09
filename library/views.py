@@ -35,7 +35,7 @@ def index():
     return render_template('index.html', form=form, url=url, params=params_d)
 
 
-@app.route('/callback')
+@app.route('/callback/')
 def callback():
     return render_template('callback.html')
 
