@@ -1,5 +1,5 @@
 __author__ = 'amigos'
-from flask import render_template, Blueprint, request, json
+from flask import render_template, Blueprint, request, json, make_response
 from library import app
 from library.forms import PaymentFormIntercassa
 import requests
@@ -35,9 +35,9 @@ def index():
     return render_template('index.html', form=form, url=url, params=params_d)
 
 
-@app.route('/callback/')
+@app.route('/callback/', methods=['POST'])
 def callback():
-    return render_template('callback.html')
+    return make_response(("Hello, world!", 200, {}))
 
 
 @app.route('/successful/')
